@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --passWithNoTests --watch",
     "test:staged": "jest --passWithNoTests",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
   },
   "keywords": [],
   "author": "",
