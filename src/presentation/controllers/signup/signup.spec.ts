@@ -1,11 +1,9 @@
-import { ServerError, MissingParamError, InvalidParamError } from '../errors'
+import { EmailValidator, AddAccount, AddAccountModel, AccountModel } from './signup-protocols'
+import { ServerError, MissingParamError, InvalidParamError } from '../../errors'
 import { SignUpController } from './signup'
-import { emailValidator } from '../protocols'
-import { AddAccount, AddAccountModel } from '../../domain/usecases/add-account'
-import { AccountModel } from '../../domain/models/account'
 
-const makeEmailValidator = (): emailValidator => {
-  class EmailValidatorStub implements emailValidator {
+const makeEmailValidator = (): EmailValidator => {
+  class EmailValidatorStub implements EmailValidator {
     isValid (email: string): boolean {
       return true
     }
@@ -30,7 +28,7 @@ const makeAddAccount = (): AddAccount => {
 
 interface sutType {
   sut: SignUpController
-  emailValidatorStub: emailValidator
+  emailValidatorStub: EmailValidator
   addAccountStub: AddAccount
 }
 
